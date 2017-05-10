@@ -1,0 +1,88 @@
+﻿<Page
+    x:Class="FindYourBuddiesApp.Pages.FriendsOverviewPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FindYourBuddiesApp.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:sharedCodePortable="using:SharedCodePortable"
+    mc:Ignorable="d">
+
+    <Grid Background="Transparent">
+        
+         <Grid.RowDefinitions>
+             <RowDefinition Height="*" />
+             <RowDefinition Height="Auto" />
+         </Grid.RowDefinitions>
+        <Grid>
+    <Rectangle Width="10000" Stretch="UniformToFill" />
+            <ScrollViewer VerticalAlignment="Stretch">
+        <StackPanel Orientation="Vertical">
+            <ListView x:Name="FriendList" ItemsSource="{x:Bind Friends}" SelectionChanged="FriendList_OnSelectionChanged">
+                <ListView.ItemTemplate >
+                    <DataTemplate x:DataType="sharedCodePortable:User">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Grid Column="0">
+                                <Button Name="FriendButton" Width="100" Background="Aqua" Click="FriendButton_OnClick" />
+                            </Grid>
+                            
+                            <Grid Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                
+                                <Grid Row="0">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Name: " />
+                                        <TextBlock Text="{x:Bind FirstName}" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Row="1">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="UserName: " />
+                                        <TextBlock Text="{x:Bind UserName}" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <Grid Row="2">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Distance: " />
+                                        <TextBlock Text="13.37 KM" />
+                                    </StackPanel>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+                
+                
+                
+               
+          
+            </ListView>
+            
+        </StackPanel>
+        </ScrollViewer>
+        </Grid>
+        
+            <Grid Row="1">
+                <Grid Background="NavajoWhite">
+                <Button Name="RefreshButton" FontFamily="Segoe MDL2 Assets" FontSize="24" Content="&#xE895;" HorizontalAlignment="Left" Click="RefreshButton_OnClick" />
+                    <TextBlock Name="SelectTb" Text="Selected: " FontSize="24" HorizontalAlignment="Left" Margin="45,0" />
+                    <TextBlock Name="SelectedFriend" Text="None" HorizontalAlignment="Center" FontSize="24" />
+                    <Button Name="AddFriendButton" FontFamily="Segoe MDL2 Assets"  FontSize="24" Content="&#xE710;" HorizontalAlignment="Right" Click="AddFriendButton_OnClick" />
+                </Grid>
+            </Grid>
+            
+        </Grid>
+  
+</Page>
